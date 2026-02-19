@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANSTO Source — gold double-pulse ring (L.divIcon)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes ansto-ring {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+.ansto-pulse-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #fbbf24;
+    border-radius: 50%;
+    animation: ansto-ring 1.8s ease-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Tier-3 — red hazard glow ring (L.divIcon)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes hazard-ring {
+    0% {
+        transform: scale(0.7);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+.tier3-hazard-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #ef4444;
+    border-radius: 50%;
+    animation: hazard-ring 2s ease-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Legacy CircleMarker pulse (kept for fallback)
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes tier3-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.8);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.tier3-pulse {
+    animation: tier3-pulse 2s ease-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Leaflet popup — dark theme
+   ═══════════════════════════════════════════════════════════════════ */
+.leaflet-popup-content-wrapper {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+.leaflet-popup-tip {
+    background: #1e293b;
+}
+
+.leaflet-popup-content {
+    margin: 12px 16px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Custom scrollbar
+   ═══════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Prevent Leaflet z-index fighting sidebar
+   ═══════════════════════════════════════════════════════════════════ */
+.leaflet-container {
+    z-index: 0;
+}

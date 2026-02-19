@@ -1,0 +1,27 @@
+# Project Knowledge Base: Medical Isotope Supply Optimizer
+
+## Physics Constants
+**Isotope**: Technetium-99m (Tc-99m)
+
+*   **Half-life ($T_{1/2}$)**: 6.0 hours
+*   **Decay Constant ($\lambda$)**:
+    $$ \lambda = \frac{\ln(2)}{T_{1/2}} \approx \frac{0.693147}{6.0} \approx 0.115525 \text{ h}^{-1} $$
+
+    *Usage*: Activity at time $t$ ($A_t$) given initial activity $A_0$:
+    $$ A_t = A_0 e^{-\lambda t} $$
+
+## Priority Tiers
+Hospitals are categorized by tiers to prioritize supply, especially for regionally isolated areas.
+
+| Tier Value | Category | Description | Proposed Weighting ($W_{tier}$) |
+| :--- | :--- | :--- | :--- |
+| **0** | Source | ANSTO Lucas Heights | N/A |
+| **1** | Metro / Outer Metro | Standard urban access | 1.0 |
+| **2** | Regional Hub / Coastal | Reduced access frequency | 2.0 |
+| **3** | Remote / Border | Critical priority due to isolation | 4.0 |
+
+*Note: Weights are proposed exponential ($2^{Tier-1}$) to strictly prioritize higher tiers in the objective function.*
+
+## Data Sources
+- **Hospitals**: [hospitals.json](file:///c:/Users/ahame/OneDrive/Desktop/Personal%20Project%201/hospitals.json) (Local)
+- **Traffic/Routing**: Transport for NSW (TfNSW) Open Data API

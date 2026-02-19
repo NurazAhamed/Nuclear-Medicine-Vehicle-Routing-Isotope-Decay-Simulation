@@ -1,0 +1,78 @@
+# Implementation Plan - Medical Isotope Supply Optimizer
+
+## Goal Description
+Maximize the total delivered activity of Tc-99m to 20 hospitals, prioritizing critical regional/remote locations (Tier 3). The system will be migrated to a Modular Clean Architecture.
+
+## User Review Required
+> [!IMPORTANT]
+> **TfNSW API Key Required**: To access real-time traffic data, a valid API key for the Transport for NSW Open Data Hub is required. Please provide this key or authorize the use of a mock service for initial development.
+
+> [!NOTE]
+> **Optimization Strategy**: The optimizer will prioritize hospitals based on their specific Tier Weighting defined in the Knowledge Base ($2^{Tier-1}$).
+
+## Proposed Architecture
+The system will follow a **Modular Clean Architecture** to ensure separation of concerns and testability.
+
+### directory Structure
+```
+src/
+├── core/                   # Inner Layer: Domain Logic (No dependencies)
+│   ├── entities/           # Hospital, Isotope, SupplyChain
+│   └── use_cases/          # CalculateDecay, OptimiseDelivery
+├── adapters/               # Middle Layer: Interface Adapters
+│   ├── gateways/           # HospitalRepo, TrafficProvider
+│   └── controllers/        # CLI, API Handlers
+└── infrastructure/         # Outer Layer: Frameworks & Drivers
+    ├── ingest/             # JSON Loader, File I/O
+    ├── traffic_api/        # TfNSW Client (Requests)
+    └── ui/                 # Visualization
+```
+
+## Proposed Changes
+
+### [Core] Physics & Domain
+#### [NEW] `src/core/entities/isotope.py`
+- Class `Isotope(half_life: double)`
+- Method `decay_factor(time_delta: double) -> double`
+
+#### [NEW] `src/core/entities/hospital.py`
+- Class `Hospital(name, lat, lon, tier)`
+- Method `priority_weight() -> double` (Reads from Knowledge Base config)
+
+### [Infrastructure] Ingest
+#### [NEW] `src/infrastructure/ingest/loader.py`
+- Function to load [hospitals.json](file:///c:/Users/ahame/OneDrive/Desktop/Personal%20Project%201/hospitals.json).
+- Validation logic to ensure data integrity (lat/lon bounds, tier 1-3).
+
+### [Infrastructure] External API (Traffic)
+#### [NEW] `src/infrastructure/traffic_api/tfnsw_client.py`
+- Implementation of `TrafficProvider` interface.
+- uses `requests` to call TfNSW Trip Planner API.
+- Endpoint: `GET /v1/tp/trip`
+- Params: `originCoordName`, `destCoordName` (formatted as strictly `Lat,Lon`), `searchForArrival=0` (departure now).
+
+### [Core] Optimizer
+#### [NEW] `src/core/use_cases/supply_optimizer.py`
+- Logic to calculate "Utility" = $Activity_{delivered} \times Weight_{tier}$.
+- $Activity_{delivered} = A_{source} \times e^{-\lambda t_{travel}}$.
+- $t_{travel}$ fetched from `TrafficProvider`.
+
+### [Infrastructure] UI
+#### [NEW] `src/infrastructure/ui/dashboard.py`
+- Simple web interface (e.g., Streamlit or React) to visualize:
+    - List of hospitals.
+    - Estimated travel times (Live vs Static).
+    - Total Delivered Activity.
+
+## Verification Plan
+
+### Automated Tests
+- **Unit Tests**:
+    - `test_decay_calculation`: Verify $e^{-\lambda t}$ against known values (e.g., $t=6h \rightarrow 0.5$).
+    - `test_loader`: Verify [hospitals.json](file:///c:/Users/ahame/OneDrive/Desktop/Personal%20Project%201/hospitals.json) loads correctly and catches missing fields.
+- **Integration Tests**:
+    - `test_traffic_api`: Mock usage of TfNSW API to verify response parsing.
+
+### Manual Verification
+- **API Check**: Run a script to fetch travel time from ANSTO to Westmead and verify it returns a reasonable duration (e.g., ~45-60 mins).
+- **Optimizer Check**: Verify that Tier 3 hospitals with equal travel time to Tier 1 are prioritized.

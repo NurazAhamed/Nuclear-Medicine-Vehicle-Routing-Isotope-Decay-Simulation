@@ -1,0 +1,149 @@
+[
+  {
+    "name": "ANSTO Lucas Heights",
+    "type": "Source",
+    "lat": -34.0531,
+    "lon": 150.9790,
+    "tier": 0
+  },
+  {
+    "name": "Royal North Shore",
+    "type": "Metro Hub",
+    "lat": -33.8213,
+    "lon": 151.1897,
+    "tier": 1
+  },
+  {
+    "name": "Westmead Hospital",
+    "type": "Metro Hub",
+    "lat": -33.8044,
+    "lon": 150.9878,
+    "tier": 1
+  },
+  {
+    "name": "Prince of Wales",
+    "type": "Metro Hub",
+    "lat": -33.9181,
+    "lon": 151.2393,
+    "tier": 1
+  },
+  {
+    "name": "Liverpool Hospital",
+    "type": "Metro Hub",
+    "lat": -33.9200,
+    "lon": 150.9308,
+    "tier": 1
+  },
+  {
+    "name": "Nepean Hospital",
+    "type": "Outer Metro",
+    "lat": -33.7709,
+    "lon": 150.6896,
+    "tier": 1
+  },
+  {
+    "name": "St George Hospital",
+    "type": "Metro Hub",
+    "lat": -33.9645,
+    "lon": 151.1345,
+    "tier": 1
+  },
+  {
+    "name": "Gosford Hospital",
+    "type": "Regional Hub",
+    "lat": -33.4243,
+    "lon": 151.3364,
+    "tier": 2
+  },
+  {
+    "name": "Wollongong Hospital",
+    "type": "Regional Hub",
+    "lat": -34.4250,
+    "lon": 150.8872,
+    "tier": 2
+  },
+  {
+    "name": "Hornsby Ku-ring-gai",
+    "type": "Metro",
+    "lat": -33.7042,
+    "lon": 151.1095,
+    "tier": 2
+  },
+  {
+    "name": "Shoalhaven Hospital",
+    "type": "Coastal Hub",
+    "lat": -34.8778,
+    "lon": 150.5925,
+    "tier": 2
+  },
+  {
+    "name": "Orange Health Service",
+    "type": "Remote Hub",
+    "lat": -33.3216,
+    "lon": 149.1065,
+    "tier": 3
+  },
+  {
+    "name": "Dubbo Base Hospital",
+    "type": "Remote Hub",
+    "lat": -32.2393,
+    "lon": 148.6208,
+    "tier": 3
+  },
+  {
+    "name": "Tamworth Rural Referral",
+    "type": "Remote Hub",
+    "lat": -31.0772,
+    "lon": 150.9231,
+    "tier": 3
+  },
+  {
+    "name": "Wagga Wagga Hospital",
+    "type": "Remote Hub",
+    "lat": -35.1205,
+    "lon": 147.3601,
+    "tier": 3
+  },
+  {
+    "name": "Coffs Harbour Hospital",
+    "type": "Coastal Hub",
+    "lat": -30.3150,
+    "lon": 153.0975,
+    "tier": 3
+  },
+  {
+    "name": "Port Macquarie Base",
+    "type": "Coastal Hub",
+    "lat": -31.4503,
+    "lon": 152.8804,
+    "tier": 3
+  },
+  {
+    "name": "Lismore Base Hospital",
+    "type": "Remote Hub",
+    "lat": -28.8153,
+    "lon": 153.2842,
+    "tier": 3
+  },
+  {
+    "name": "Bathurst Hospital",
+    "type": "Regional Hub",
+    "lat": -33.4262,
+    "lon": 149.5701,
+    "tier": 3
+  },
+  {
+    "name": "Tweed Valley Hospital",
+    "type": "Border Hub",
+    "lat": -28.1751,
+    "lon": 153.5414,
+    "tier": 3
+  },
+  {
+    "name": "Western Cancer Centre",
+    "type": "Remote Hub",
+    "lat": -32.2393,
+    "lon": 148.6208,
+    "tier": 3
+  }
+]

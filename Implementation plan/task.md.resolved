@@ -1,0 +1,16 @@
+# Medical Isotope Supply Optimizer Migration
+
+- [ ] Data Hygiene
+    - [x] Fix syntax error in [hospitals.json](file:///c:/Users/ahame/OneDrive/Desktop/Personal%20Project%201/hospitals.json) (Wagga Wagga entry) <!-- id: 0 -->
+    - [x] Validate all coordinates and tiers <!-- id: 1 -->
+- [ ] Knowledge Base
+    - [x] Create [knowledge_base.md](file:///C:/Users/ahame/.gemini/antigravity/brain/0cab2070-12c4-4750-a2bd-7c13a4ccce71/knowledge_base.md) with Physics Constants and Priority Weightings <!-- id: 2 -->
+- [ ] Planning
+    - [x] Draft [implementation_plan.md](file:///C:/Users/ahame/.gemini/antigravity/brain/0cab2070-12c4-4750-a2bd-7c13a4ccce71/implementation_plan.md) (Modular Clean Architecture) <!-- id: 3 -->
+    - [x] Define API Integration Strategy (TfNSW) <!-- id: 4 -->
+- [ ] Implementation (Blocked on Review)
+    - [ ] Scaffold Project Structure <!-- id: 5 -->
+    - [ ] Implement `knowledge` module <!-- id: 6 -->
+    - [ ] Implement `ingest` module <!-- id: 7 -->
+    - [ ] Implement `physics` module <!-- id: 8 -->
+    - [ ] Implement `optimizer` shell <!-- id: 9 -->
